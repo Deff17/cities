@@ -1,0 +1,36 @@
+plugins {
+    id 'java'
+    id 'groovy'
+    id 'application'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.11
+targetCompatibility = 1.11
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '2.7.2'
+    implementation group: 'org.springframework', name: 'spring-jdbc', version: '5.3.22'
+    implementation group: 'org.postgresql', name: 'postgresql', version: '42.4.1'
+    implementation group: 'org.apache.commons', name: 'commons-dbcp2', version: '2.9.0'
+
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+    testImplementation group: 'com.github.tomakehurst', name: 'wiremock', version: '2.27.2', ext: 'pom'
+    testImplementation group: 'org.spockframework', name: 'spock-core', version: '2.1-groovy-3.0'
+    testImplementation group: 'org.spockframework', name: 'spock-spring', version: '2.1-groovy-3.0'
+}
+
+application {
+    mainClass = 'cities.App'
+}
+
+test {
+    useJUnitPlatform()
+}

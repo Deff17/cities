@@ -1,0 +1,9 @@
+executor:
+  poolSize: 10
+postgres:
+  driver: "jdbc.drivers=org.postgresql.Driver"
+  user: "postgres"
+  password: "1234"
+  url: "jdbc:postgresql://localhost:5432/cities_db"
+page:
+  pageSize: 20
