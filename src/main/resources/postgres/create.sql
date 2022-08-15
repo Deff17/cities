@@ -1,5 +1,5 @@
 CREATE TABLE IF NOT EXISTS cities (
-    id BIGSERIAL NOT NULL,
+    id BIGINT NOT NULL,
     name TEXT NOT NULL,
     photo TEXT NOT NULL,
 

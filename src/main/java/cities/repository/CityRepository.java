@@ -1,6 +1,6 @@
 package cities.repository;
 
-import cities.repository.dto.CityDto;
+import cities.repository.entity.CityEntity;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,19 +13,19 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public class CitiesRepository {
+public class CityRepository {
     private final NamedParameterJdbcTemplate jdbcTemplate;
 
     private final String citiesTableName = "cities";
 
-    private static final Logger log = LoggerFactory.getLogger(CitiesRepository.class);
+    private static final Logger log = LoggerFactory.getLogger(CityRepository.class);
 
     @Autowired
-    public CitiesRepository(NamedParameterJdbcTemplate jdbcTemplate) {
+    public CityRepository(NamedParameterJdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    public List<CityDto> getCities(Integer pageNumber, String name, Integer pageSize) {
+    public List<CityEntity> getCities(Integer pageNumber, String name, Integer pageSize) {
         Integer offset = pageNumber * pageSize - pageSize;
         String namePhrase = name == null ? null : name + "%";
         String sql = String.format(
@@ -45,7 +45,7 @@ public class CitiesRepository {
         paramSource.addValue("offset", offset);
         paramSource.addValue("limit", pageSize);
         try {
-            return jdbcTemplate.query(sql, paramSource, new BeanPropertyRowMapper<>(CityDto.class));
+            return jdbcTemplate.query(sql, paramSource, new BeanPropertyRowMapper<>(CityEntity.class));
         } catch (DataAccessException exception) {
             log.warn("Failed to get cities", exception);
             throw exception;

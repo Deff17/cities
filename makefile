@@ -1,6 +1,6 @@
 setup_postgres:
 	docker build --no-cache -t postgres_with_cities .
-	-docker rm -f postgres_cities
+	docker rm -f postgres_cities
 	docker run -d \
 		--name postgres_cities \
 		-e POSTGRES_PASSWORD=1234 \

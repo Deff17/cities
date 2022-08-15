@@ -1,0 +1,5 @@
+page:
+  pageSize: 5
+postgres:
+  driverClass: org.testcontainers.jdbc.ContainerDatabaseDriver
+  url: jdbc:tc:postgresql:11.7://notusedhostname:notusedport/notuseddatabasename?serverTimezone=Poland&useSSL=false&characterEncoding=utf8&TC_INITSCRIPT=postgres/create.sql&TC_DAEMON=true
