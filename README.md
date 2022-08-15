@@ -17,6 +17,8 @@ In new terminal:
 
 ``cd cities-ui``
 
+``npm install``
+
 ``npm start``
 
 The app should open on `localhost:3000`
