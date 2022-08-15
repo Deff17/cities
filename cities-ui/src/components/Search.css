@@ -1,0 +1,21 @@
+.search-box {
+    position: relative;
+    margin: auto;
+}
+.search-input {
+    position: absolute;
+    left: 40vh;
+    right: 40vh;
+    top: 10vh;
+    margin: auto;
+    width: 30vh;
+}
+
+.search-button {
+    position: absolute;
+    left: 80vh;
+    right: 40vh;
+    top: 10vh;
+    margin: auto;
+    width: 10vh;
+}

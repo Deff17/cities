@@ -1,0 +1,39 @@
+.item-page {
+    position: relative;
+    width: 65%;
+    height: 210vh;
+    background-color: antiquewhite;
+    margin: auto;
+    border-radius: 10px;
+}
+.MuiPagination-root {
+    justify-content: center;
+    display: flex
+}
+
+.pagination-top {
+    position: absolute;
+    left: 35vh;
+    right: 35vh;
+    margin: auto;
+    top: 19vh;
+}
+
+.pagination-bottom {
+    position: absolute;
+    left: 35vh;
+    right: 35vh;
+    margin: auto;
+    bottom: 5vh;
+}
+
+.city-list {
+    position: relative;
+    width: 60%;
+    top: 25vh;
+    bottom: 5vh;
+    margin: auto;
+
+}
+
+

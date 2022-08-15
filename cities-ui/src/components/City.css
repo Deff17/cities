@@ -1,0 +1,47 @@
+.city-box {
+    position: relative;
+    background-color: #fffce5;
+    border: black solid;
+    border-radius: 5px;
+    height: 15vh;
+    width: 75vh;
+    margin: 10px auto;
+}
+
+label.city-name{
+    position: absolute;
+    left: 45vh;
+    margin: 2px auto;
+}
+
+input.city.top {
+    position: absolute;
+    width: 40%;
+    height: 10%;
+    left: 30vh;
+    top: 30%;
+    box-sizing: border-box;
+}
+
+input.city.bottom {
+    position: absolute;
+    width: 40%;
+    height: 10%;
+    left: 30vh;
+    top: 60%;
+    box-sizing: border-box;
+
+}
+
+button.city {
+    position: absolute;
+    left: 83%;
+    top: 53%;
+}
+
+img.city {
+    border-radius: 5px;
+    height: 100%;
+    width: 35%;
+    float: left;
+}
