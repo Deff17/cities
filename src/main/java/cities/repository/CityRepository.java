@@ -28,18 +28,21 @@ public class CityRepository {
     public List<CityEntity> getCities(Integer pageNumber, String name, Integer pageSize) {
         Integer offset = pageNumber * pageSize - pageSize;
         String namePhrase = name == null ? null : name + "%";
-        String sql = String.format(
-                "WITH records AS ( " +
-                "    SELECT id, name, photo " +
+        String sql = String.format("WITH numerated_cities AS ( " +
+                "    SELECT row_number() over (ORDER BY id) AS row, id, name, photo " +
                 "    FROM %s " +
                 "    WHERE (cast(:name as text) is null OR name like :name) " +
-                "    ORDER BY id OFFSET :offset FETCH FIRST :limit ROWS ONLY " +
-                "), total_count AS ( " +
+                "    ORDER BY id " +
+                "), single_page AS ( " +
+                "    SELECT  id, name, photo " +
+                "    FROM numerated_cities " +
+                "    WHERE (cast(:name as text) is null OR name like :name) " +
+                "    AND row > :offset LIMIT :limit " +
+                "),total_count AS ( " +
                 "    SELECT COUNT(*) AS total FROM %s " +
                 "    WHERE (cast(:name as text) is null OR name like :name) " +
-                ") " +
-                "SELECT id, name, photo, total " +
-                "FROM records, total_count;", citiesTableName, citiesTableName);
+                ") SELECT id, name, photo, total " +
+                "FROM single_page, total_count;", citiesTableName, citiesTableName);
         MapSqlParameterSource paramSource = new MapSqlParameterSource();
         paramSource.addValue("name", namePhrase);
         paramSource.addValue("offset", offset);
